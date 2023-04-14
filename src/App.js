@@ -12,7 +12,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>Minha Homepage</h1>
+        <h1>TrybeTunes</h1>
         <Route exact path="/" component={ Login } />
         <Route exact path="/search" component={ Search } />
         <Route exact path="/album/:id" component={ Album } />

@@ -35,7 +35,7 @@ class Login extends React.Component {
           loading ? <p>Carregando...</p> : ( // se loading for true, substituo meu form por <p>
             <form>
               <label htmlFor="login-inp">
-                Insira seu nome:
+                Logar
                 <input
                   value={ name }
                   onChange={ this.handleChange } // pega a string e seta no state
