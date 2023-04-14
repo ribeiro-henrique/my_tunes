@@ -8,11 +8,11 @@ class Header extends React.Component {
   };
 
   componentDidMount() {
-    this.getUser();
+    this.handleUser(); // chama a função após o comp ser
   }
 
   handleUser = async () => {
-    const { loading, nameUser } = this.state;
+    /* const { loading, nameUser } = this.state; */
     this.setState({
       loading: true,
     });
