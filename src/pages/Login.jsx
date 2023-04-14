@@ -9,18 +9,18 @@ class Login extends React.Component {
   };
 
   handleChange = ({ target: { value } }) => {
-    this.setState({
+    this.setState({ // recebe a string digitada no input
       name: value,
     });
   };
 
-  handleUser = async () => {
+  handleUser = async () => { // conecta com a API, por isso async
     const { name } = this.state;
-    const { history } = this.props;
+    const { history } = this.props; // history é uma prop do Router, permite navegar entre rotas
     this.setState({
       loading: true,
     });
-    await createUser({ name });
+    await createUser({ name }); // passando p createUser meu nome no state
     history.push('/search');
   };
 
@@ -32,13 +32,13 @@ class Login extends React.Component {
     return (
       <div data-testid="page-login">
         {
-          loading ? <p>Carregando...</p> : (
+          loading ? <p>Carregando...</p> : ( // se loading for true, substituo meu form por <p>
             <form>
               <label htmlFor="login-inp">
                 Insira seu nome:
                 <input
                   value={ name }
-                  onChange={ this.handleChange }
+                  onChange={ this.handleChange } // pega a string e seta no state
                   id="login-inp"
                   data-testid="login-name-input"
                 />
@@ -46,7 +46,7 @@ class Login extends React.Component {
               <button
                 data-testid="login-submit-button"
                 onClick={ this.handleUser }
-                disabled={ name.length < TRES }
+                disabled={ name.length < TRES } // pegando name do state, se for < 3 disabled é true
               >
                 Entrar
               </button>
