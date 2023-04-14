@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 
@@ -8,6 +9,7 @@ class Search extends React.Component {
     loading: false,
     discs: [],
     artist: '',
+    showMsg: false,
   };
 
   handleChange = ({ target: { value } }) => {
@@ -17,7 +19,7 @@ class Search extends React.Component {
   };
 
   handleClick = async () => {
-    const { name, discs } = this.state;
+    const { name } = this.state;
     this.setState({
       loading: true,
     });
@@ -25,8 +27,9 @@ class Search extends React.Component {
     this.setState({
       name: '',
       loading: false,
-      discs: [...discs, fetchAlbum],
+      discs: fetchAlbum,
       artist: name,
+      showMsg: true,
     });
   };
 
@@ -44,7 +47,7 @@ class Search extends React.Component {
   ]
  */
   render() {
-    const { name, loading, artist, discs } = this.state;
+    const { name, loading, artist, discs, showMsg } = this.state;
 
     const DOIS = 2;
 
@@ -73,9 +76,20 @@ class Search extends React.Component {
             </form>
           )
         }
+        { artist && <p>{`Resultado de álbuns de: ${artist}`}</p> }
         {
-          discs.length > 0 ? artist && <p>{`Resultado de álbuns de: ${artist}`}</p> : (
-            <span>Nenhum álbum foi encontrado</span>
+          discs.length === 0 ? showMsg && <span>Nenhum álbum foi encontrado</span> : (
+            discs.map((e) => (
+              <div key={ e.artistId }>
+                <img src={ e.artworkUrl100 } alt={ e.collectionName } />
+                <Link
+                  to={ `/album/${e.collectionId}` }
+                  data-testid={ `link-to-album-${e.collectionId}` }
+                >
+                  { e.collectionName }
+                </Link>
+              </div>
+            ))
           )
         }
       </div>
