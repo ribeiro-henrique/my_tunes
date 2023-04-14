@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { getUser } from '../services/userAPI';
+import './Header.css';
 
 class Header extends React.Component {
   state = {
@@ -26,12 +28,17 @@ class Header extends React.Component {
   render() {
     const { loading, nameUser } = this.state;
     return (
-      <header data-testid="header-component">
+      <header className="header-content" data-testid="header-component">
         { loading ? <p>Carregando...</p> : (
           <p data-testid="header-user-name">
             { nameUser }
           </p>
         ) }
+        <nav className="nav-bar">
+          <Link to="/search" data-testid="link-to-search">Search</Link>
+          <Link to="/favorites" data-testid="link-to-favorites">Favorites</Link>
+          <Link to="/profile" data-testid="link-to-profile">Profile</Link>
+        </nav>
       </header>
     );
   }
