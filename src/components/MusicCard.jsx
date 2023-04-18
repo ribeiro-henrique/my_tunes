@@ -12,18 +12,19 @@ class MusicCard extends React.Component {
     this.handleFavorite();
   }
 
-  handleFavorite = async (event) => {
+  handleFavorite = async ({ target }) => {
     const { trackId } = this.props;
-    const { checked } = event.target;
+    const { checked } = target;
+    /* const checked = event ? event.target.checked : false; */
     this.setState({
       loading: true,
+      favorited: checked,
     });
     if (checked) {
       await addSong(trackId);
     }
     this.setState({
       loading: false,
-      favorited: checked,
     });
   };
 
