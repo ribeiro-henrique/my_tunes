@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createUser } from '../services/userAPI';
+import '../styles/Login.css';
 
 class Login extends React.Component {
   state = {
@@ -30,12 +31,12 @@ class Login extends React.Component {
     const TRES = 3;
 
     return (
-      <div data-testid="page-login">
+      <div className="login-container" data-testid="page-login">
         {
           loading ? <p>Carregando...</p> : ( // se loading for true, substituo meu form por <p>
             <form>
               <label htmlFor="login-inp">
-                Logar
+                <span>Logar</span>
                 <input
                   value={ name }
                   onChange={ this.handleChange } // pega a string e seta no state

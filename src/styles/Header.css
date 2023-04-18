@@ -1,8 +1,10 @@
 .header-content {
   align-items: center;
-  background-color: #038ab8;
-  color: #f1f1f1;
+  background-color: #4b9b4d;
+  color: #1a1a1a;
   display: flex;
+  font-size: 20px;
+  font-weight: 500;
   height: 80px;
   justify-content: space-between;
   padding: 0 20px;
@@ -16,8 +18,8 @@
 
 .nav-bar {
   align-items: center;
-  background-color: #038ab8;
-  color: #f1f1f1;
+  background-color: #4b9b4d;
+  color: #424242;
   display: flex;
   height: 50px;
   justify-content: space-between;
@@ -25,7 +27,7 @@
 }
 
 .nav-bar a {
-  color: #f1f1f1;
+  color: #2b2b2b;
   font-size: 1.2rem;
   font-weight: 700;
   margin-right: 10px;

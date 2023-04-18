@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
+import '../styles/Search.css';
 
 class Search extends React.Component {
   state = {
@@ -80,8 +81,12 @@ class Search extends React.Component {
         {
           discs.length === 0 ? showMsg && <span>Nenhum álbum foi encontrado</span> : (
             discs.map((e) => (
-              <div key={ e.artistId }>
-                <img src={ e.artworkUrl100 } alt={ e.collectionName } />
+              <div key={ e.artistId } className="disc">
+                <img
+                  className="disc-img"
+                  src={ e.artworkUrl100 }
+                  alt={ e.collectionName }
+                />
                 <Link
                   to={ `/album/${e.collectionId}` }
                   data-testid={ `link-to-album-${e.collectionId}` }

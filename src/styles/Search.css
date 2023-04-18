@@ -1,0 +1,67 @@
+form {
+  align-items: first baseline;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+
+label {
+  color: azure;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+input {
+  margin-left: 10px;
+}
+
+button {
+  background-color: #4b9b4d;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 10px;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+span {
+  font-size: 1.2rem;
+  margin: 20px;
+}
+
+img {
+  border-radius: 5px;
+  height: 200px;
+  margin-bottom: 10px;
+  object-fit: cover;
+  width: 200px;
+}
+
+a {
+  color: #4b9b4d;
+  display: block;
+  font-size: 1.2rem;
+  text-align: center;
+  text-decoration: none;
+}
+
+.disc {
+  display: inline-block;
+  max-width: 200px;
+}
+
+.disc img {
+  width: 100%;
+}
+
+.disc-img {
+  margin-left: 50px;
+  padding: 10px;
+}
+
