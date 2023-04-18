@@ -15,8 +15,8 @@ class MusicCard extends React.Component {
   handleFavorite = async ({ target: { checked } }) => {
     const { trackId } = this.props;
     // const { checked } = target;
-    console.log(checked);
-    console.log(trackId);
+    // console.log(checked);
+    // console.log(trackId);
     /* const checked = event ? event.target.checked : false; */
     this.setState({
       loading: true,

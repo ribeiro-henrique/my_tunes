@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
 import MusicCard from '../components/MusicCard';
+import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 // verificar o obj history
 // fazer a requisição de musicas com getMusics
@@ -13,12 +14,25 @@ class Album extends React.Component {
     album: [],
     songs: [],
     loading: false,
+    favorite: [],
 
   };
 
   componentDidMount() {
     this.handleAlbum();
+    // this.handleFavorite();
   }
+
+  handleFavorite = async () => {
+    this.setState({
+      loading: true,
+    });
+    const pleasured = await getFavoriteSongs();
+    this.setState({
+      favorite: pleasured,
+      loading: false,
+    });
+  };
 
   handleAlbum = async () => {
     const { match: { params: { id } } } = this.props;
@@ -27,6 +41,7 @@ class Album extends React.Component {
       album: pickedAlbum[0], // first element com info do album
       songs: pickedAlbum,
     });
+    this.handleFavorite();
   };
 
   /*   [
@@ -46,7 +61,7 @@ class Album extends React.Component {
   // music api, trackId, artistName, collectionName
 
   render() {
-    const { album, songs, loading } = this.state;
+    const { album, songs, loading, favorite } = this.state;
     return (
       <div data-testid="page-album">
         <Header />
@@ -62,6 +77,7 @@ class Album extends React.Component {
                     trackName={ music.trackName }
                     previewUrl={ music.previewUrl }
                     trackId={ music.trackId }
+                    favorite={ favorite }
                   />
                 </div>
               )) }
