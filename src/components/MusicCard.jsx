@@ -8,13 +8,15 @@ class MusicCard extends React.Component {
     favorited: false,
   };
 
-  componentDidMount() {
-    this.handleFavorite();
-  }
+  // async componentDidMount() {
+  //   await this.handleFavorite();
+  // }
 
-  handleFavorite = async ({ target }) => {
+  handleFavorite = async ({ target: { checked } }) => {
     const { trackId } = this.props;
-    const { checked } = target;
+    // const { checked } = target;
+    console.log(checked);
+    console.log(trackId);
     /* const checked = event ? event.target.checked : false; */
     this.setState({
       loading: true,
@@ -49,8 +51,8 @@ class MusicCard extends React.Component {
                 id={ trackId }
                 type="checkbox"
                 data-testid={ `checkbox-music-${trackId}` }
-                onChange={ this.handleFavorite }
                 checked={ favorited }
+                onChange={ this.handleFavorite }
               />
             </label>
           )
